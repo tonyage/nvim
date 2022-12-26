@@ -89,8 +89,11 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     event = { "VeryLazy" },
+    init = function()
+      vim.g.indent_blankline_char =  "▏"
+    end,
     config = {
-      space_char_blankline= " ",
+      use_treesitter_scope = true,
       show_first_indent_level = false,
       show_current_context = true,
       show_current_context_start = true

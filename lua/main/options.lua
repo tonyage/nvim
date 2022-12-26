@@ -45,10 +45,11 @@ vim.opt.cmdheight = 1
 vim.opt.whichwrap:append "<>[]hl"
 
 vim.opt.fillchars = {
-  vert = "▕",
+  -- vert = " ",
   eob = " ",
-  verthoriz = "▕",
-  vertleft = "▕",
+  -- horizdown = "┌",
+  -- verthoriz = "▕",
+  -- vertleft = "▕",
   vertright = " ",
   
 }
