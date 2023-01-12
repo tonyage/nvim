@@ -62,4 +62,3 @@ local disabled_plugins = {
 for _, plugin in pairs(disabled_plugins) do
   vim.g[ "loaded_" .. plugin ] = 1
 end
-

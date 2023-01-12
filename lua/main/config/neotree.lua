@@ -3,8 +3,14 @@ return {
   filesystem = {
     hijack_netrw_behavior = "open_default",
   },
+  default_component_configs = {
+    container = {
+      right_padding = 1
+    }
+  },
   source_selector = {
     winbar = true,
+    tabs_layout = "equal",
     show_separator_on_edge = false,
   },
 }

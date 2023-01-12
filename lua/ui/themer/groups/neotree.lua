@@ -5,9 +5,10 @@ return {
   NeoTreePreview = { bg = colors.base01 },
   NeoTreeFilterTerm = { bg = colors.base02 },
   NeoTreeWinSeparator = { bg = colors.base00, fg = colors.base00 },
-  NeoTreeTabActive = { bg = colors.base02 },
+  NeoTreeModified = { fg = colors.orange },
+  NeoTreeTabActive = { bg = colors.base01 },
   NeoTreeTabInactive = { bg = colors.base02 },
-  NeoTreeTabSeparatorActive = { bg = colors.base02 },
-  NeoTreeTabSeparatorInactive = { bg = colors.base02 },
+  NeoTreeTabSeparatorActive = { bg = colors.base01, fg = colors.base01},
+  NeoTreeTabSeparatorInactive = { bg = colors.base02, fg = colors.base02 },
 }
 

@@ -37,17 +37,28 @@ require("lazy").setup({
   "williamboman/mason.nvim",
   "folke/zen-mode.nvim",
   "rcarriga/nvim-notify",
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    config = function()
+      require("auto-session").setup({
+        auto_session_suppress_dirs = { "~/", "~/Downloads", "~/git", "~/Code" },
+      })
+      vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+    end
+  },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
-    keys = { "<leader>ex" },
+    lazy = false,
+    keys = { "|" },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
     config = function()
-      key.map("n", "<leader>ex", ":Neotree reveal <CR>")
+      key.map("n", "|", ":Neotree reveal <CR>")
       require("neo-tree").setup(require("main.config.neotree"))
     end,
   },
@@ -102,6 +113,7 @@ require("lazy").setup({
 
   {
     "williamboman/mason-lspconfig.nvim",
+    cmd = "LspInstall",
     config = {
       ensure_installed = constants.servers,
       automatic_installation = true,
