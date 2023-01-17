@@ -1,5 +1,10 @@
 local M = {}
 
+local terminal = require("ui.terminal")
+local ft_cmds = {
+  python = "python3 " .. vim.fn.expand("%"), shell = "bash " .. vim.fn.expand("%")
+}
+
 M.map = function(mode, lhs, rhs, opts)
   opts = opts or { noremap = true }
   vim.keymap.set(mode, lhs, rhs, opts)
@@ -18,6 +23,17 @@ M.default = function()
 
   M.map("x", "<leader>p", [["_dP]])
   M.map("n", "Q", "<nop>")
+  M.map("n", "q", "<nop>")
+
+  M.map( { "n", "t" }, "<F5>", function()
+   terminal.toggle("horizontal")
+  end )
+  M.map( { "n", "t" }, "<F4>", function()
+    terminal.toggle("float")
+  end )
+  M.map("n", "<leader>b", function()
+    terminal.send(ft_cmds[vim.bo.filetype])
+  end)
 end
 
 return M

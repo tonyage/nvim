@@ -16,7 +16,7 @@ local lazy_defaults = {
         "tutor",
         "zipPlugin",
       }, }, },
-  debug = true,
+  debug = false,
 }
 
 if not vim.loop.fs_stat(lazypath) then
@@ -41,8 +41,26 @@ require("lazy").setup({
     "rmagatti/auto-session",
     lazy = false,
     config = function()
+      local neotree = require("neo-tree.command")
+      local manager = require("neo-tree.sources.manager")
+      local function close() neotree.execute({ action = "close" }) end
+      local function show()
+        neotree.execute({ action = "show" })
+        manager.refresh("filesystem")
+        manager.refresh("buffers")
+        manager.refresh("git_status")
+      end
       require("auto-session").setup({
         auto_session_suppress_dirs = { "~/", "~/Downloads", "~/git", "~/Code" },
+        pre_save_cmds = { close() },
+        post_save_cmds = { show() },
+        post_open_cmds = { show() },
+        post_restore_cmds = { show() },
+        cwd_change_handling = {
+          restore_upcoming_session = true,
+          pre_cwd_changed_hook = close(),
+          post_cwd_changed_hook = show()
+        }
       })
       vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
     end
