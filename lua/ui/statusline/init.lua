@@ -7,7 +7,7 @@ function M.setup()
     sections.git(),
     "%=",
     "%#StatusLine#",
-    -- sections.progress(),
+    sections.progress(),
     "%#StatusLine#",
     "%=",
     sections.diagnostics(),

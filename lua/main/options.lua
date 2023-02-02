@@ -38,20 +38,17 @@ vim.opt.termguicolors = true
 vim.opt.backup = false
 vim.opt.writebackup = false
 
-vim.opt.list = true
-vim.opt.listchars:append "eol:↴"
+-- vim.opt.list = true
+-- vim.opt.listchars:append "space: "
+-- vim.opt.listchars:append "eol:↴"
 vim.opt.updatetime = 300
 vim.opt.cmdheight = 1
 vim.opt.whichwrap:append "<>[]hl"
+vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver100,a:blinkon100"
 
 vim.opt.fillchars = {
-  -- vert = " ",
   eob = " ",
-  -- horizdown = "┌",
-  -- verthoriz = "▕",
-  -- vertleft = "▕",
   vertright = " ",
-  
 }
 
 local disabled_plugins = {

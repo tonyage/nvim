@@ -66,6 +66,11 @@ function M.progress()
     return ""
   end
 
+  local updates = ""
+  if require("lazy.status").has_updates() then
+    updates = require("lazy.status").updates()
+  end
+
   local msg = lsp.message or ""
   local percentage = lsp.percentage or 0
   local title = lsp.title or ""
@@ -73,7 +78,7 @@ function M.progress()
   local ms = vim.loop.hrtime() / 1000000
   local frame = math.floor(ms / 120) % #spinners
   local content = string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
-  return ("%#lsp_progress#" .. content) or ""
+  return ("%#lsp_progress#" .. content .. updates) or ""
 end
 
 function M.diagnostics()

@@ -28,7 +28,7 @@ M.default = function()
   M.map( { "n", "t" }, "<F5>", function()
    terminal.toggle("horizontal")
   end )
-  M.map( { "n", "t" }, "<F4>", function()
+  M.map( { "n", "t" }, "<C-\\>", function()
     terminal.toggle("float")
   end )
   M.map("n", "<leader>b", function()
@@ -37,4 +37,3 @@ M.default = function()
 end
 
 return M
-

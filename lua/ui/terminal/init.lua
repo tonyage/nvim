@@ -73,12 +73,12 @@ end
 local function set_behavior(behavior)
   if behavior.autoclose_on_quit.enabled then
     local function force_exit()
-      require("terminal.terminal").close_all_terms()
+      require("ui.terminal").close_all_terms()
       vim.api.nvim_command "qa"
     end
     vim.api.nvim_create_autocmd({ "WinClosed" }, {
       callback = vim.schedule_wrap(function()
-        local open_terms = require("terminal.terminal").list_active_terms "win"
+        local open_terms = require("ui.terminal").list_active_terms("win")
 
         local non_terms = vim.tbl_filter(function(win)
           return not vim.tbl_contains(open_terms, win)
@@ -181,6 +181,7 @@ function terminal.new(type, shell_override)
   vim.cmd("startinsert")
   return term
 end
+
 
 function terminal.toggle(type)
   terminals = util.verify(terminals)

@@ -20,7 +20,7 @@ end
 function util.execute_type_cmd(type, terminals, override)
   local opts = terminals.type_opts[type]
   local dims = type ~= "float" and util.get_split_dims(type, opts.split_ratio) or util.calc_float_opts(opts)
-  dims = override and "" or dims
+  dims = override and 0 or dims
   local type_cmds = {
     horizontal = function()
       vim.cmd(opts.location .. dims .. " split")

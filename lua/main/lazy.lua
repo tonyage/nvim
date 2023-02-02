@@ -2,6 +2,8 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lspkind = require("ui.icons")["lspkind"]
 local constants = require("main.constants")
 local key = require("main.mappings")
+
+require("ui.themer").highlight("lazy")
 local lazy_defaults = {
   defaults = { lazy = true },
   checker = { enabled = true },
@@ -15,8 +17,14 @@ local lazy_defaults = {
         "tohtml",
         "tutor",
         "zipPlugin",
-      }, }, },
+      },
+    },
+  },
   debug = false,
+  ui = {
+    size = { width = 0.5, height = 0.5 },
+    border = "double",
+  },
 }
 
 if not vim.loop.fs_stat(lazypath) then
@@ -35,26 +43,28 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
   "L3MON4D3/LuaSnip",
   "williamboman/mason.nvim",
-  "folke/zen-mode.nvim",
   "rcarriga/nvim-notify",
   {
     "rmagatti/auto-session",
     lazy = false,
     config = function()
-      local neotree = require("neo-tree.command")
       local manager = require("neo-tree.sources.manager")
-      local function close() neotree.execute({ action = "close" }) end
+      local function close()
+        vim.notify("closing neo-tree")
+        manager.close_all()
+      end
       local function show()
-        neotree.execute({ action = "show" })
-        manager.refresh("filesystem")
-        manager.refresh("buffers")
-        manager.refresh("git_status")
+        vim.notify("opening neo-tree")
+        manager.show("filesystem")
       end
       require("auto-session").setup({
         auto_session_suppress_dirs = { "~/", "~/Downloads", "~/git", "~/Code" },
+        bypass_session_save_file_types = { "neo-tree", "terminal" },
+        auto_save_enabled = true,
+        auto_restore_enabled = true,
+        auto_session_use_git_branch = true,
         pre_save_cmds = { close() },
-        post_save_cmds = { show() },
-        post_open_cmds = { show() },
+        pre_restore_cmds = { close() },
         post_restore_cmds = { show() },
         cwd_change_handling = {
           restore_upcoming_session = true,
@@ -122,10 +132,12 @@ require("lazy").setup({
       vim.g.indent_blankline_char =  "▏"
     end,
     config = {
+      show_end_of_line = true,
+      show_current_context = true,
+      show_current_context_start = true,
       use_treesitter_scope = true,
       show_first_indent_level = false,
-      show_current_context = true,
-      show_current_context_start = true
+      space_char_blankline = " "
     },
   },
 
@@ -145,8 +157,17 @@ require("lazy").setup({
   },
 
   {
+    "nvim-telescope/telescope.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = require("main.config.telescope")
+  },
+
+  {
     "hrsh7th/nvim-cmp",
-    event = { "InsertEnter" },
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-cmdline",

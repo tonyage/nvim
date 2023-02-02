@@ -8,7 +8,7 @@ return {
         col = 0.25,
         width = 0.5,
         height = 0.4,
-        border = "single",
+        border = "double",
       },
       horizontal = { location = "rightbelow", split_ratio = 0.3 },
       vertical = { location = "rightbelow", split_ratio = 0.5 },
@@ -16,7 +16,7 @@ return {
   },
   behavior = {
     autoclose_on_quit = {
-      enabled = false,
+      enabled = true,
       confirm = true,
     },
     close_on_exit = true,
