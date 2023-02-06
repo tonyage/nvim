@@ -6,7 +6,14 @@ local key = require("main.mappings")
 require("ui.themer").highlight("lazy")
 local lazy_defaults = {
   defaults = { lazy = true },
-  checker = { enabled = true },
+  checker = {
+    enabled = false,
+    notify = true
+  },
+  change_detection = {
+    enabled = true,
+    notify = true
+  },
   performance = {
     rtp = {
       disabled_plugins = {
@@ -50,11 +57,9 @@ require("lazy").setup({
     config = function()
       local manager = require("neo-tree.sources.manager")
       local function close()
-        vim.notify("closing neo-tree")
         manager.close_all()
       end
       local function show()
-        vim.notify("opening neo-tree")
         manager.show("filesystem")
       end
       require("auto-session").setup({
@@ -162,7 +167,9 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    config = require("main.config.telescope")
+    config = function()
+      require("main.config.telescope")
+    end,
   },
 
   {

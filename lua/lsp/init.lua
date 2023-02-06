@@ -12,4 +12,5 @@ end
 require("lsp.sumneko")
 require("lsp.rust")
 require("lsp.yamlls")
+require("lsp.nix")
 

@@ -7,8 +7,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-
+-- vim.opt.softtabstop = 2
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.laststatus = 3

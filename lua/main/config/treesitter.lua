@@ -1,5 +1,10 @@
 require("ui.themer").highlight("treesitter")
 
+
+parser_install_dir = vim.fn.stdpath("data") .. "/treesitter"
+vim.fn.mkdir(parser_install_dir, "p")
+vim.opt.runtimepath:append(parser_install_dir)
+
 local config = {
   ensure_installed = "all",
   auto_install = true,

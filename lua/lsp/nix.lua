@@ -1,15 +1,16 @@
 local config = require("lsp.config")
 local lspconfig = require("lspconfig")
+print(vim.inspect(vim.env.NIL_PATH))
 
-lspconfig.rust_analyzer.setup({
+lspconfig.nil_ls.setup({
+  autostart = true,
   on_attach = config.on_attach,
   capabilities = config.capabilities,
-  settings = {
-    ["rust-analyzer"] = {
+  settings= {
+    ["nil"] = {
       formatting = {
-        command = { "rustfmt" }
+        command = { "nixpkgs-fmt" }
       }
     }
   }
 })
-
