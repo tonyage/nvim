@@ -90,7 +90,7 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
-    config = function()
+    init = function()
       key.map("n", "|", ":Neotree reveal <CR>")
       require("neo-tree").setup(require("main.config.neotree"))
     end,
@@ -103,6 +103,17 @@ require("lazy").setup({
       vim.defer_fn(function()
         require("copilot").setup()
       end, 100)
+    end
+  },
+
+  {
+    "zbirenbaum/copilot-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "zbirenbaum/copilot.lua"
+    },
+    config = function()
+      require("copilot_cmp").setup()
     end
   },
 
@@ -121,13 +132,21 @@ require("lazy").setup({
   { "numToStr/Comment.nvim", lazy = false, config = true },
 
   {
-    "j-hui/fidget.nvim",
-    event = { "BufReadPre" },
-    config = {
-      text = {
-        spinner = "dots_scrolling"
-      }
+    "nvchad/nvim-colorizer.lua",
+    event = "BufEnter",
+    opts = {
+      filetypes = {
+        "nix",
+        lua = { names = false },
+        css = { rgb_fn = true },
+        html = { names = false },
+        "scss",
+        "javascript"
+      },
     },
+    init = function(_, opts)
+      require("colorizer").setup(opts)
+    end
   },
 
   {

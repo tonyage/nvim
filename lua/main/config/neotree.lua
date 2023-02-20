@@ -1,6 +1,7 @@
 require("ui.themer").highlight("neotree")
 return {
   filesystem = {
+    visible = true,
     hijack_netrw_behavior = "open_default",
     always_show = {
       ".github/",
