@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
       vim.wo.cursorcolumn = true
       vim.api.nvim_win_del_var(0, "auto-cursorline")
     end
-  end
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
@@ -18,5 +18,5 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
       vim.wo.cursorline = false
       vim.wo.cursorcolumn = false
     end
-  end
+  end,
 })

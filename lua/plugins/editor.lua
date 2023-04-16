@@ -42,4 +42,20 @@ return {
       },
     },
   },
+  {
+    "uga-rosa/ugaterm.nvim",
+    lazy = false,
+    opts = {
+      prefix = "local",
+      filetype = "ugaterm",
+      open_cmd = "botright 15sp",
+    },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      current_line_blame = true,
+      current_line_blame_opts = { delay = 150 },
+    },
+  },
 }

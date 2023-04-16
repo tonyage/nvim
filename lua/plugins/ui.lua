@@ -127,7 +127,8 @@ return {
         show_separator_on_edge = false,
       },
       popup_border_style = "single",
-      open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
+      open_files_do_not_replace_types = { "terminal", "trouble", "qf", "ugaterm" },
+      separator = { right = "▏" },
     },
   },
   {
@@ -163,11 +164,11 @@ return {
     opts = {
       views = {
         cmdline_popup = {
-          border = { style = "none", padding = { 1, 1 } },
+          border = { style = "single", padding = { 1, 1 } },
           filter_options = {},
           position = { row = 5, col = "50%" },
           size = { width = 60, height = "auto" },
-          win_options = { winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder" },
+          win_options = { winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" } },
         },
         popupmenu = {
           relative = "editor",
@@ -177,7 +178,7 @@ return {
           win_options = { winhighlight = { Normal = "Pmenu", FloatBorder = "DiagnosticInfo" } },
         },
         mini = {
-          win_options = { winhighlight = { Normal = "Terminal" } },
+          win_options = { winhighlight = { Normal = "Normal" } },
         },
       },
     },

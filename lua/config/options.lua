@@ -25,8 +25,9 @@ vim.opt.wrap = true
 vim.opt.writebackup = false
 
 -- vim.opt.fillchars = {
--- eob = " ",
--- vertright = " "
+-- eob = "▏",
+-- vertright = "▏" ,
+-- vertleft = "▏",
 -- }
 
 vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
