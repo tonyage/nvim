@@ -19,6 +19,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
+    { import = "lazyvim.plugins.extras.dap.core" },
+    { import = "lazyvim.plugins.extras.dap.nlua" },
     -- { import = "lazyvim.plugins.extras.ui.mini-starter" },
     { import = "plugins" },
   },
@@ -45,5 +47,10 @@ require("lazy").setup({
         "zipPlugin",
       },
     },
+  },
+  ui = {
+    size = { width = 0.5, height = 0.4 },
+    border = "single",
+    winblend = 20,
   },
 })
