@@ -31,7 +31,10 @@ return {
         yamlls = {
           settings = {
             ["yaml"] = {
-              schemas = { ["https://json.schemastore.org/github-workflow.json"] = ".github/**/*.yml" },
+              schemas = {
+                ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.yml",
+                ["https://json.schemastore.org/github-action.json"] = ".github/actions/*.yml",
+              },
             },
           },
         },
