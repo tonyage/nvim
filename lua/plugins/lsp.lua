@@ -9,7 +9,6 @@ return {
         bashls = {},
         cmake = {},
         dockerls = {},
-        gopls = {},
         gradle_ls = {},
         kotlin_language_server = {},
         ltex = {},

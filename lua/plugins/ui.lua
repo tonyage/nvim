@@ -135,7 +135,7 @@ return {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
     keys = {
-      { "<leader>o", "<cmd>SymbolsOutline", desc = "Open Symbols Outline menu" },
+      { "<leader>o", "<cmd>SymbolsOutline<CR>", desc = "Open Symbols Outline menu" },
     },
     opts = { position = "right" },
   },
