@@ -1,10 +1,10 @@
 return {
   {
     "nvchad/nvim-colorizer.lua",
-    opts = { filetypes = { "lua", "css", "nix", "javascript" } },
+    opts = { filetypes = { "lua", "css", "nix", "javascript", "json" } },
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       local null = require("null-ls")
 
@@ -27,7 +27,6 @@ return {
 
       table.insert(opts.sources, null.builtins.formatting.prettierd)
 
-      table.insert(opts.sources, null.builtins.diagnostics.deadnix)
       table.insert(opts.sources, null.builtins.code_actions.statix)
 
       table.insert(
@@ -48,8 +47,6 @@ return {
 
       table.insert(opts.sources, null.builtins.formatting.markdownlint)
       table.insert(opts.sources, null.builtins.diagnostics.markdownlint)
-
-      table.insert(opts.sources, require("typescript.extensions.null-ls.code-actions"))
 
       table.insert(opts.sources, null.builtins.formatting.yamlfmt)
       table.insert(opts.sources, null.builtins.diagnostics.yamllint)
@@ -79,20 +76,12 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "VeryLazy",
-    opts = {
-      show_end_of_line = true,
-      show_first_indent_level = false,
-    },
-  },
-  {
-    "uga-rosa/ugaterm.nvim",
-    lazy = false,
-    opts = {
-      prefix = "local",
-      filetype = "ugaterm",
-      open_cmd = "botright 15sp",
-    },
+    main = "ibl",
+    opts = function()
+      local hooks = require("ibl.hooks")
+      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+      require("ibl").setup({})
+    end,
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -111,7 +100,9 @@ return {
         vim.list_extend(opts.ensured_installed, {
           "c",
           "cmake",
+          "css",
           "dart",
+          "go",
           "json5",
           "jsonc",
           "kotlin",
@@ -120,6 +111,7 @@ return {
           "nix",
           "rust",
           "scss",
+          "sql",
         })
       end
     end,

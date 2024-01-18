@@ -4,7 +4,7 @@ return {
     opts = function()
       return {
         defaults = {
-          winblend = 20,
+          winblend = 10,
           results_title = false,
           prompt_title = false,
           preview_title = false,
@@ -22,11 +22,6 @@ return {
               prompt_position = "top",
             },
             preview_cutoff = 120,
-          },
-          borderchars = {
-            prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
-            results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
-            preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
           },
         },
       }

@@ -8,8 +8,8 @@ return {
         offsets = {
           {
             filetype = "neo-tree",
-            text = "",
             highlight = "CursorLine",
+            text = "",
           },
         },
         hover = {
@@ -17,6 +17,9 @@ return {
           delay = 200,
           reveal = { "close" },
         },
+        separator_style = "thin",
+        style_preset = require("bufferline").style_preset.minimal,
+        themeable = true,
       },
     },
   },
@@ -103,6 +106,12 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    requires = {
+      "3rd/image.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
     opts = {
       filesystem = {
         filtered_items = {
@@ -144,7 +153,7 @@ return {
     lazy = true,
     init = function()
       vim.g.navic_silence = true
-      require("lazyvim.util").on_attach(function(client, buffer)
+      require("lazyvim.util").lsp.on_attach(function(client, buffer)
         if client.server_capabilities.documentSymbolProvider then
           require("nvim-navic").attach(client, buffer)
         end
@@ -162,40 +171,8 @@ return {
   {
     "folke/noice.nvim",
     opts = {
-      views = {
-        cmdline_popup = {
-          border = { style = "single", padding = { 1, 1 } },
-          filter_options = {},
-          position = { row = 5, col = "50%" },
-          size = { width = 60, height = "auto" },
-          win_options = { winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" } },
-        },
-        popupmenu = {
-          relative = "editor",
-          border = { style = "none", padding = { 1, 1 } },
-          position = { row = 9, col = "50%" },
-          size = { width = 60, height = 10 },
-          win_options = { winhighlight = { Normal = "Pmenu", FloatBorder = "DiagnosticInfo" } },
-        },
-        mini = {
-          win_options = { winhighlight = { Normal = "Normal" } },
-        },
-      },
+      presets = { command_palette = true },
     },
   },
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      {
-        fps = 100,
-        on_open = function(win)
-          if vim.api.nvim_win_is_valid(win) then
-            vim.api.nvim_win_set_config(win, {
-              border = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-            })
-          end
-        end,
-      },
-    },
-  },
+  { "rcarriga/nvim-notify" },
 }

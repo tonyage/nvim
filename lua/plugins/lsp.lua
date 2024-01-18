@@ -1,4 +1,5 @@
 return {
+  { "folke/neodev.nvim" },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -6,18 +7,22 @@ return {
       version = false,
     },
     opts = {
+      inlay_hints = { enable = true },
       diagnostics = {
-        virtual_text = { prefix = "", source = "always" },
+        virtual_text = { prefix = "icons", source = "always" },
       },
       servers = {
         bashls = {},
         cmake = {},
+        cssls = {},
+        dartls = {},
         dockerls = {},
+        gopls = {},
         gradle_ls = {},
         jsonls = {
           on_new_config = function(new_config)
             new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-            vim.list_extend(new_config.settings.json.schemas, reuire("schemastore").json.schemas())
+            vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
           end,
           settings = {
             json = {
@@ -32,15 +37,15 @@ return {
             Lua = {
               workspace = {
                 checkThirdParty = false,
-                library = {
-                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                  [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                },
+                library = vim.api.nvim_get_runtime_file("", true),
               },
+              telemetry = { enable = false },
               completion = { callSnippet = "Replace" },
             },
           },
         },
+        html = {},
+        htmx = {},
         ltex = {},
         nil_ls = {
           settings = {
@@ -73,8 +78,8 @@ return {
         clangd = function(_, opts)
           opts.capabilities.offsetEncoding = { "utf-16" }
         end,
-        tsserver = function(_, opts)
-          require("lazyvim.util").on_attach(function(client, buffer)
+        tsserver = function()
+          require("lazyvim.util").lsp.on_attach(function(client, buffer)
             if client.name == "tsserver" then
               vim.keymap.set(
                 "n",
@@ -90,8 +95,6 @@ return {
               )
             end
           end)
-          require("typescript").setup({ server = opts })
-          return true
         end,
       },
     },
