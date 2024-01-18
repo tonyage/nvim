@@ -75,21 +75,13 @@ return {
     },
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = function()
-      local hooks = require("ibl.hooks")
-      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
-      require("ibl").setup({})
-    end,
-  },
-  {
     "lewis6991/gitsigns.nvim",
     opts = {
       current_line_blame = true,
       current_line_blame_opts = { delay = 150 },
     },
   },
+  { "numToStr/Comment.nvim", config = true, lazy = false },
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {

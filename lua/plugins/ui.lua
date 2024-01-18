@@ -174,5 +174,4 @@ return {
       presets = { command_palette = true },
     },
   },
-  { "rcarriga/nvim-notify" },
 }
