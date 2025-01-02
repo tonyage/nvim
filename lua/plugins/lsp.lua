@@ -17,8 +17,7 @@ return {
         cssls = {},
         dartls = {},
         dockerls = {},
-        gopls = {},
-        gradle_ls = {},
+        jinja_lsp = {},
         jsonls = {
           on_new_config = function(new_config)
             new_config.settings.json.schemas = new_config.settings.json.schemas or {}
@@ -31,7 +30,6 @@ return {
             },
           },
         },
-        kotlin_language_server = {},
         lua_ls = {
           setings = {
             Lua = {
@@ -45,15 +43,6 @@ return {
           },
         },
         html = {},
-        htmx = {},
-        ltex = {},
-        nil_ls = {
-          settings = {
-            ["nil"] = {
-              formatting = { command = { "nixpkgs-fmt" } },
-            },
-          },
-        },
         ruff_lsp = {},
         pyright = {},
         rust_analyzer = {
@@ -96,18 +85,6 @@ return {
             end
           end)
         end,
-      },
-    },
-  },
-  {
-    "zbirenbaum/copilot.lua",
-    keys = {
-      {
-        "<leader>cp",
-        function()
-          require("copilot.suggestion").toggle_auto_trigger()
-        end,
-        desc = "Copilot suggestion toggle",
       },
     },
   },

@@ -22,10 +22,10 @@ return {
         })
       )
 
-      table.insert(opts.sources, null.builtins.formatting.cmake_format)
-      table.insert(opts.sources, null.builtins.diagnostics.cmake_lint)
+      -- table.insert(opts.sources, null.builtins.formatting.cmake_format)
+      -- table.insert(opts.sources, null.builtins.diagnostics.cmake_lint)
 
-      table.insert(opts.sources, null.builtins.formatting.prettierd)
+      -- table.insert(opts.sources, null.builtins.formatting.prettierd)
 
       table.insert(opts.sources, null.builtins.code_actions.statix)
 
@@ -35,15 +35,14 @@ return {
           extra_args = { "-i", 2, "-s", "-w" },
         })
       )
-      table.insert(opts.sources, null.builtins.code_actions.shellcheck)
+      -- table.insert(opts.sources, null.builtins.code_actions.shellcheck)
+      -- table.insert(opts.sources, null.builtins.code_actions.refactoring)
 
-      table.insert(opts.sources, null.builtins.code_actions.refactoring)
+      -- table.insert(opts.sources, null.builtins.formatting.buf)
+      -- table.insert(opts.sources, null.builtins.diagnostics.buf)
 
-      table.insert(opts.sources, null.builtins.formatting.buf)
-      table.insert(opts.sources, null.builtins.diagnostics.buf)
-
-      table.insert(opts.sources, null.builtins.formatting.ruff)
-      table.insert(opts.sources, null.builtins.diagnostics.ruff)
+      -- table.insert(opts.sources, null.builtins.formatting.ruff)
+      -- table.insert(opts.sources, null.builtins.diagnostics.ruff)
 
       table.insert(opts.sources, null.builtins.formatting.markdownlint)
       table.insert(opts.sources, null.builtins.diagnostics.markdownlint)
