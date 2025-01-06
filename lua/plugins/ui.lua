@@ -18,8 +18,10 @@ return {
           reveal = { "close" },
         },
         separator_style = "thin",
+        indicator = {
+          style = "none",
+        },
         style_preset = require("bufferline").style_preset.minimal,
-        themeable = true,
       },
     },
   },

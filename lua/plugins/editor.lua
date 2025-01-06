@@ -7,50 +7,28 @@ return {
     "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       local null = require("null-ls")
+      local code_actions = null.builtins.code_actions
+      local diagnostics = null.builtins.diagnostics
+      local formatting = null.builtins.formatting
+      local hover = null.builtins.hover
 
-      table.insert(opts.sources, null.builtins.hover.dictionary)
-      table.insert(opts.sources, null.builtins.hover.printenv)
-
-      table.insert(
-        opts.sources,
-        null.builtins.code_actions.gitsigns.with({
+      opts.sources = vim.list_extend(opts.sources or {}, {
+        code_actions.gitsigns.with({
           config = {
             filter_actions = function(title)
               return title:lower():match("blame") == nil
             end,
           },
-        })
-      )
-
-      -- table.insert(opts.sources, null.builtins.formatting.cmake_format)
-      -- table.insert(opts.sources, null.builtins.diagnostics.cmake_lint)
-
-      -- table.insert(opts.sources, null.builtins.formatting.prettierd)
-
-      table.insert(opts.sources, null.builtins.code_actions.statix)
-
-      table.insert(
-        opts.sources,
-        null.builtins.formatting.shfmt.with({
-          extra_args = { "-i", 2, "-s", "-w" },
-        })
-      )
-      -- table.insert(opts.sources, null.builtins.code_actions.shellcheck)
-      -- table.insert(opts.sources, null.builtins.code_actions.refactoring)
-
-      -- table.insert(opts.sources, null.builtins.formatting.buf)
-      -- table.insert(opts.sources, null.builtins.diagnostics.buf)
-
-      -- table.insert(opts.sources, null.builtins.formatting.ruff)
-      -- table.insert(opts.sources, null.builtins.diagnostics.ruff)
-
-      table.insert(opts.sources, null.builtins.formatting.markdownlint)
-      table.insert(opts.sources, null.builtins.diagnostics.markdownlint)
-
-      table.insert(opts.sources, null.builtins.formatting.yamlfmt)
-      table.insert(opts.sources, null.builtins.diagnostics.yamllint)
-
-      table.insert(opts.sources, null.builtins.diagnostics.zsh)
+        }),
+        code_actions.refactoring,
+        code_actions.statix,
+        diagnostics.markdownlint,
+        diagnostics.yamllint,
+        diagnostics.zsh,
+        formatting.treefmt,
+        hover.dictionary,
+        hover.printenv,
+      })
     end,
   },
   {
