@@ -9,6 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
@@ -45,7 +46,9 @@ require("lazy").setup({
     -- have outdated releases, which may break your Neovim install.
     version = false, -- always use the latest git commit
   },
-  install = { colorscheme = { "dusk" } },
+  install = {
+    colorscheme = { "dusk" },
+  },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {

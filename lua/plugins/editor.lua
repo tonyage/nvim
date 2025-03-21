@@ -31,26 +31,7 @@ return {
       })
     end,
   },
-  {
-    "bennypowers/splitjoin.nvim",
-    lazy = true,
-    keys = {
-      {
-        "gj",
-        function()
-          require("splitjoin").join()
-        end,
-        desc = "Join the object under the cursor",
-      },
-      {
-        "g,",
-        function()
-          require("splitjoin").split()
-        end,
-        desc = "Split the object under the cursor",
-      },
-    },
-  },
+  { "echasnovski/mini.splitjoin", version = "*" },
   {
     "lewis6991/gitsigns.nvim",
     opts = {
@@ -58,7 +39,6 @@ return {
       current_line_blame_opts = { delay = 150 },
     },
   },
-  { "numToStr/Comment.nvim", config = true, lazy = false },
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
