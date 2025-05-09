@@ -66,4 +66,13 @@ return {
     end,
     context_commentstring = { enable = true },
   },
+  {
+    "lervag/vimtex",
+    lazy = false,
+    init = function()
+      vim.g.vimtex_view_general_viewer = "open"
+      vim.g.vimtex_view_general_options = "-a Preview"
+      vim.g.vimtext_compiler_method = "tectonic"
+    end,
+  },
 }
