@@ -1,6 +1,10 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.ai.copilot",
+    "lazyvim.plugins.extras.coding.blink",
+    "lazyvim.plugins.extras.coding.nvim-cmp",
+    "lazyvim.plugins.extras.editor.aerial",
+    "lazyvim.plugins.extras.editor.dial",
+    "lazyvim.plugins.extras.editor.inc-rename",
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.cmake",
     "lazyvim.plugins.extras.lang.docker",
@@ -12,7 +16,9 @@
     "lazyvim.plugins.extras.lang.sql",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.yaml",
-    "lazyvim.plugins.extras.lang.zig"
+    "lazyvim.plugins.extras.lang.zig",
+    "lazyvim.plugins.extras.test.core",
+    "lazyvim.plugins.extras.util.mini-hipatterns"
   ],
   "install_version": 7,
   "news": {
